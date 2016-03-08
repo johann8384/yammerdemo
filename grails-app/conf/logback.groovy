@@ -22,5 +22,5 @@ if (Environment.isDevelopmentMode() && targetDir) {
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
 
-logger 'yammer.metrics.YammerMetricsGrailsPlugin',
+logger 'grails.plugin.dropwizard.DropwizardMetricsGrailsPlugin',
         INFO, ['STDOUT'], false

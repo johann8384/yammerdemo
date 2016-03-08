@@ -1,6 +1,6 @@
 ---
 grails:
-    yammer:
+    dropwizard:
         metrics:
             uri: /checkMetrics
             reporterFrequency: 15 # log every 15 seconds
