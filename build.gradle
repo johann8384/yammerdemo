@@ -73,7 +73,7 @@ dependencies {
 
     console "org.grails:grails-console"
 
-    compile "org.grails.plugins:yammer-metrics:1.0.0.BUILD-SNAPSHOT"
+    compile "org.grails.plugins:dropwizard-metrics:1.0.0.BUILD-SNAPSHOT"
 }
 
 task wrapper(type: Wrapper) {
