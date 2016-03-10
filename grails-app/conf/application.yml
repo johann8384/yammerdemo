@@ -2,10 +2,7 @@
 grails:
     dropwizard:
         metrics:
-            uri: /checkMetrics
             reporterFrequency: 15 # log every 15 seconds
-        health:
-            uri: /checkHealth
 ---
 grails:
     profile: web

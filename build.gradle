@@ -74,6 +74,9 @@ dependencies {
     console "org.grails:grails-console"
 
     compile "org.grails.plugins:dropwizard-metrics:1.0.0.BUILD-SNAPSHOT"
+
+    // TODO - get rid of the need for this
+    compile 'io.dropwizard.metrics:metrics-core'
 }
 
 task wrapper(type: Wrapper) {

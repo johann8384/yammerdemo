@@ -13,12 +13,12 @@ import spock.lang.Stepwise
 class DemoControllerSpec extends Specification {
 
     static doWithSpring = {
-        dropwizardMetricsRegistry MetricRegistry
+        metricRegistry MetricRegistry
     }
 
     void 'test the @Metered annotation'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someMeteredAction()
@@ -30,7 +30,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Metered annotation again'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someMeteredAction()
@@ -42,7 +42,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Timed annotation'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someTimedAction()
@@ -54,7 +54,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Timed annotation again'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someTimedAction()
@@ -66,7 +66,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Metered annotation with useClassPrefix set to true'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someOtherMeteredAction()
@@ -78,7 +78,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Metered annotation again with useClassPrefix set to true'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someOtherMeteredAction()
@@ -90,7 +90,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Timed annotation with useClassPrefix set to true'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someOtherTimedAction()
@@ -102,7 +102,7 @@ class DemoControllerSpec extends Specification {
 
     void 'test the @Timed annotation again with useClassPrefix set to true'() {
         setup:
-        def registry = applicationContext.dropwizardMetricsRegistry
+        def registry = applicationContext.metricRegistry
 
         when:
         controller.someOtherTimedAction()
