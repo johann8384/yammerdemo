@@ -103,21 +103,18 @@
                 </g:each>
             </ul>
         </div>
-        <div id="page-body" role="main">
-            <h1>Welcome to Grails</h1>
-            <p>Congratulations, you have successfully started your first Grails application! At the moment
-               this is the default page, feel free to modify it to either redirect to a controller or display whatever
-               content you may choose. Below is a list of controllers that are currently deployed in this application,
-               click on each to execute its default action:</p>
 
-            <div id="controller-list" role="navigation">
-                <h2>Available Controllers:</h2>
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                    </g:each>
-                </ul>
-            </div>
+        <div id="page-body" role="main">
+            <h1>Yammer Demo</h1>
+            <g:if test="${flash.message}">
+                <div class="message" role="status">${flash.message}</div>
+            </g:if>
+            <p>Clicking these links will affect the metrics that the system should be logging to stdout.</p>
+            <p>Click <g:link action="someMeteredAction" controller="demo">here</g:link> to invoke a metered action.</p>
+            <p>Click <g:link action="someOtherMeteredAction" controller="demo">here</g:link> to invoke a different metered action.</p>
+
+            <p>Click <g:link action="someTimedAction" controller="demo">here</g:link> to invoke a timed action.</p>
+            <p>Click <g:link action="someOtherTimedAction" controller="demo">here</g:link> to invoke a different timed action.</p>
         </div>
     </body>
 </html>

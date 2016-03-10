@@ -22,5 +22,14 @@ if (Environment.isDevelopmentMode() && targetDir) {
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
 
+appender('METRICS', ConsoleAppender) {
+    encoder(PatternLayoutEncoder) {
+        def appName = System.getProperty('demo.app.name', 'DEFAULT_APP_NAME')
+        def appEnv = System.getProperty('demo.app.environment', 'DEFAULT_APP_ENVIRONMENT')
+        def appClient = System.getProperty('demo.app.environment', 'DEFAULT_CLIENT_NAME')
+        pattern = "[$appName] [$appEnv] [$appClient] %level %logger - %msg%n"
+    }
+}
+
 logger 'grails.plugin.dropwizard.DropwizardMetricsGrailsPlugin',
-        INFO, ['STDOUT'], false
+        INFO, ['METRICS'], false

@@ -7,21 +7,25 @@ class DemoController {
 
     @Timed('some timer')
     def someTimedAction() {
-        render 'this was timed'
+        flash.message = 'someTimedAction was invoked'
+        redirect uri: '/'
     }
 
     @Metered('some meter')
     def someMeteredAction() {
-        render 'this was metered'
+        flash.message = 'someMeteredAction was invoked'
+        redirect uri: '/'
     }
 
     @Timed(value='some other timer', useClassPrefix=true)
     def someOtherTimedAction() {
-        render 'this was timed'
+        flash.message = 'someOtherTimedAction was invoked'
+        redirect uri: '/'
     }
 
     @Metered(value='some other meter', useClassPrefix=true)
     def someOtherMeteredAction() {
-        render 'this was metered'
+        flash.message = 'someOtherMeteredAction was invoked'
+        redirect uri: '/'
     }
 }
