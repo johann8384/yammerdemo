@@ -8,8 +8,6 @@ appender('STDOUT', ConsoleAppender) {
     }
 }
 
-root(ERROR, ['STDOUT'])
-
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir) {
     appender("FULL_STACKTRACE", FileAppender) {
@@ -22,6 +20,16 @@ if (Environment.isDevelopmentMode() && targetDir) {
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
 
+appender('JSON', ConsoleAppender) {
+    encoder("net.logstash.logback.encoder.LogstashEncoder") {
+        def appName = System.getProperty('demo.app.name', 'DEFAULT_APP_NAME')
+        def appEnv = System.getProperty('demo.app.environment', 'DEFAULT_APP_ENVIRONMENT')
+        def appClient = System.getProperty('demo.app.environment', 'DEFAULT_CLIENT_NAME')
+		customFields = "{\"appName\":\"$appName\", \"appEnv\":\"$appEnv\", \"appClient\":\"$appClient\"}"
+		includeCallerData = "true"
+    }
+}
+
 appender('METRICS', ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
         def appName = System.getProperty('demo.app.name', 'DEFAULT_APP_NAME')
@@ -31,5 +39,7 @@ appender('METRICS', ConsoleAppender) {
     }
 }
 
+root(INFO, ["JSON"])
+
 logger 'grails.plugin.dropwizard.DropwizardMetricsGrailsPlugin',
-        INFO, ['METRICS'], false
+        INFO, ['JSON', 'METRICS'], false

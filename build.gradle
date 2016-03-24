@@ -76,6 +76,7 @@ dependencies {
     compile "org.grails.plugins:dropwizard-metrics:1.0.0.BUILD-SNAPSHOT"
 
     // TODO - get rid of the need for this
+	compile 'net.logstash.logback:logstash-logback-encoder:4.6'
     compile 'io.dropwizard.metrics:metrics-core'
 }
 
